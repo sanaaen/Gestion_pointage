@@ -1,0 +1,45 @@
+@page
+@model projet.Pages.Presences.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Presence</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Presence.IdPres" />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Presence.Present" /> @Html.DisplayNameFor(model => model.Presence.Present)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Presence.IdE" class="control-label"></label>
+                <select asp-for="Presence.IdE" class="form-control" asp-items="ViewBag.IdE"></select>
+                <span asp-validation-for="Presence.IdE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Presence.IdS" class="control-label"></label>
+                <select asp-for="Presence.IdS" class="form-control" asp-items="ViewBag.IdS"></select>
+                <span asp-validation-for="Presence.IdS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

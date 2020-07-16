@@ -1,0 +1,57 @@
+@page
+@model projet.Pages.Etudiants.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Etudiant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Etudiant.Nom" class="control-label"></label>
+                <input asp-for="Etudiant.Nom" class="form-control" />
+                <span asp-validation-for="Etudiant.Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Etudiant.Prenom" class="control-label"></label>
+                <input asp-for="Etudiant.Prenom" class="form-control" />
+                <span asp-validation-for="Etudiant.Prenom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Etudiant.DateN" class="control-label"></label>
+                <input asp-for="Etudiant.DateN" class="form-control" />
+                <span asp-validation-for="Etudiant.DateN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Etudiant.Email" class="control-label"></label>
+                <input asp-for="Etudiant.Email" class="form-control" />
+                <span asp-validation-for="Etudiant.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Etudiant.IdF" class="control-label"></label>
+                <select asp-for="Etudiant.IdF" class ="form-control" asp-items="ViewBag.IdF"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Etudiant.IdC" class="control-label"></label>
+                <select asp-for="Etudiant.IdC" class ="form-control" asp-items="ViewBag.IdC"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

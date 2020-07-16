@@ -1,0 +1,74 @@
+@page
+@model projet.Pages.Professeurs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Professeur</h4>
+<hr />
+<div class="row">
+      <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Professeur.Name" class="control-label"></label>
+                <input asp-for="Professeur.Name" class="form-control" />
+                <span asp-validation-for="Professeur.Name" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Professeur.Email" class="control-label"></label>
+                <input asp-for="Professeur.Email" class="form-control" />
+                <span asp-validation-for="Professeur.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Professeur.Address" class="control-label"></label>
+                <input asp-for="Professeur.Address" class="form-control" />
+                <span asp-validation-for="Professeur.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Professeur.City" class="control-label"></label>
+                <input asp-for="Professeur.City" class="form-control" />
+                <span asp-validation-for="Professeur.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Professeur.PostalCode" class="control-label"></label>
+                <input asp-for="Professeur.PostalCode" class="form-control" />
+                <span asp-validation-for="Professeur.PostalCode" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Professeur.Id" />
+            <input type="hidden" asp-for="Professeur.Status" />
+            <input type="hidden" asp-for="Professeur.UserName" />
+            <input type="hidden" asp-for="Professeur.NormalizedUserName" />
+            <input type="hidden" asp-for="Professeur.AccessFailedCount" />
+            <input type="hidden" asp-for="Professeur.LockoutEnd" />
+            <input type="hidden" asp-for="Professeur.TwoFactorEnabled" />
+            <input type="hidden" asp-for="Professeur.PhoneNumberConfirmed" />
+            <input type="hidden" asp-for="Professeur.ConcurrencyStamp" />
+            <input type="hidden" asp-for="Professeur.SecurityStamp" />
+            <input type="hidden" asp-for="Professeur.PasswordHash" />
+            <input type="hidden" asp-for="Professeur.EmailConfirmed" />
+            <input type="hidden" asp-for="Professeur.NormalizedEmail" />
+            <input type="hidden" asp-for="Professeur.LockoutEnabled" />
+            
+            <div class="form-group">
+                <label asp-for="Professeur.PhoneNumber" class="control-label"></label>
+                <input asp-for="Professeur.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Professeur.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

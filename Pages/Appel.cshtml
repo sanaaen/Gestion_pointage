@@ -1,0 +1,109 @@
+﻿@page
+@model AppelModel
+@{
+      ViewData["Title"] = "Appel";
+      Layout ="/Pages/Shared/_Layout2.cshtml" ;
+}
+
+
+  
+@if(ViewBag.matOn==0){
+  <div class="row justify-content-center m-2 bg-secondary" style=" height: 100vh;">
+
+<div class="card " style="width: 50%;height: 315.5px;">
+  <img class="card-img-top rounded  img-fluid" src="Images/logo.png" alt="Card image cap">
+  <div class="card-body">
+
+
+       <form method="post">
+
+      <div class="form-group">
+    <label for="id">Id d'etudiant : </label>
+    <input type="text" class="form-control" id="pp" name="id" aria-describedby="emailHelp" placeholder="Enter ID" style="width: 100%;">
+    
+      </div>
+
+     <button  type="submit" class="btn btn-primary btnEtu" asp-page-handler="EtudiantFinder" style="width: 100%;"  onchange="Textchange(this)"   >Suivant > </button>
+
+
+    </form>
+
+    </div>
+</div>
+  </div>
+}
+else if(ViewBag.matOn==1) {
+
+   <div class="row justify-content-center m-2 bg-secondary" style=" height: 100vh;">
+     <div class="card" style="width: 50%;height: 315.5">
+  <img class="card-img-top rounded img-thumbnail" src="Images/logo.png" alt="Card image cap">
+  <div class="card-body">
+    <form method="POST">
+     <select class="form-control mb-2" id="listmat" asp-items="@ViewBag.List" name="IdM"  style="width: 100%;">
+                    <option disabled selected value="-1" >Matières</option>   
+     </select>
+      <input type="hidden" class="form-control hidden"  name="IdE" value ="@ViewBag.et">
+     <button type="submit" class="btn btn-success btnMat" asp-page-handler="m" style="width: 100%; " onchange="Textchange2(this)" >Present(e) </button>
+    </form>
+  </div>
+</div>
+  </div>
+
+
+}
+else if(ViewBag.matOn==2) {
+  <div class="row justify-content-center m-2 bg-secondary" style=" height: 100vh;">
+    <div class="card" style="width: 50%;height: 315.5px">
+  <img class="card-img-top  " src="Images/ok.jpg" alt="Card image cap"  style="width: 50px;height: 50px;    margin-left: 43%;">
+  <div class="card-body">
+    <h5 class="card-title">Present effectuer</h5>
+    
+   
+  </div>
+</div>
+
+  </div>
+}
+else if(ViewBag.matOn==3) {
+      <div class="row justify-content-center m-2 bg-secondary" style=" height: 100vh;">
+    <div class="card" style="width: 50%;315.5px;">
+  <img class="card-img-top " src="Images/no.jpg" alt="Card image cap" style="width: 50px;height: 50px;    margin-left: 43%;">
+  <div class="card-body">
+    <h5 class="card-title text-danger">Désolé vous etes En retard! </h5>
+    
+    <p class="card-text">Si "id" est correct donc vous etes en retard .</p>
+  </div>
+</div>
+
+  </div>
+}
+
+ <script language="JavaScript">
+   /*
+    $(document).ready(function(){
+   
+       $('#pp').on('keyup', function() {
+         if( $(this).val().length == 0 )
+            $('.btnEtu').attr('disabled', true);
+         else 
+         $('.btnEtu').attr('disabled', false);
+       });
+
+
+
+       $('#listmat').on('onchange', function() {
+         if( $(this).val() == '-1' )
+            $(".btnMat").attr('disabled', true);
+         else 
+         $(".btnMat").attr('disabled', false);
+       });
+
+
+
+
+
+
+
+
+});
+    </script>

@@ -1,0 +1,90 @@
+@page
+@model projet.Pages.Presences.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Tableau de présence</h2>
+
+<p>
+    <script language="JavaScript">
+     function ChangeUrl(obj)
+     {
+        
+          window.location="https://"+window.location.host+"/Presences/Index?Id="+obj.value
+          
+     }
+    </script>
+    <form>
+     <select id="listmat" asp-items="@ViewBag.List" name="ListeUrl" onchange="ChangeUrl(this)">
+                    <option disabled selected >Matières</option>   
+     </select>
+    </form>
+</p>
+@{
+    var nb = 0;
+    var taux = 0;
+    var nbEtudiant=0;
+}
+@foreach (var item in Model.Presence) {
+    nbEtudiant++;
+    if(!item.Present)
+        nb++;        
+}
+@{
+    if(nbEtudiant != 0)
+        taux = nb*100 / nbEtudiant;
+    else 
+    taux = 0;
+ }   
+<p> Nombre d'absences : @nb - Taux d'absence est : @taux %</p> 
+<h2>Présences de @Model.nommatiere</h2>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Presence[0].Etudiant.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Presence[0].Etudiant.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Presence[0].Seance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Presence[0].Present)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Presence) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etudiant.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etudiant.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seance.H_debut,item.Seance.Matiere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Present)
+            </td>
+            <td>
+                @if(     @User.IsInRole("Admin") ){
+                <a asp-page="./Edit" asp-route-id="@item.IdPres">Edit</a> <span>|</span>
+                <a asp-page="./Delete" asp-route-id="@item.IdPres">Delete</a> <span>|</span>
+                }
+                <a asp-page="./Details" asp-route-id="@item.IdPres">Details</a> 
+                
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

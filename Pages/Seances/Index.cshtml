@@ -1,0 +1,54 @@
+@page
+@model projet.Pages.Seances.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance[0].H_debut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance[0].H_fin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance[0].date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance[0].Matiere)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Seance) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.H_debut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.H_fin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.IdM)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdS">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdS">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdS">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

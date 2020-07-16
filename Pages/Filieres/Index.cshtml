@@ -1,0 +1,36 @@
+@page
+@model projet.Pages.Filieres.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Filiere[0].Intitulee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Filiere) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Intitulee)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdF">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdF">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdF">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

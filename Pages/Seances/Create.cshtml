@@ -1,0 +1,73 @@
+@page
+@model projet.Pages.Seances.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Seance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Seance.H_debut" class="control-label"></label>
+                <select asp-for="Seance.H_debut" class ="form-control" >
+                    <option value="08:30">08:30</option>
+                    <option value="09:30">09:30</option>
+                    <option value="10:30">10:30</option>
+                    <option value="11:30">11:30</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:30">14:30</option>
+                    <option value="15:30">15:30</option>
+                    <option value="16:30">16:30</option>
+                    <option value="17:30">17:30</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:30">19:30</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seance.H_fin" class="control-label"></label>
+                <select asp-for="Seance.H_fin" class ="form-control" >
+                     <option value="08:30">08:30</option>
+                    <option value="09:30">09:30</option>
+                    <option value="10:30">10:30</option>
+                    <option value="11:30">11:30</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:30">14:30</option>
+                    <option value="15:30">15:30</option>
+                    <option value="16:30">16:30</option>
+                    <option value="17:30">17:30</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:30">19:30</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seance.date" class="control-label"></label>
+                <input asp-for="Seance.date" class="form-control" />
+                <span asp-validation-for="Seance.date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seance.IdM" class="control-label"></label>
+                <select asp-for="Seance.IdM" class ="form-control" asp-items="ViewBag.IdM"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

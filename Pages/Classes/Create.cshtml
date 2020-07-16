@@ -1,0 +1,56 @@
+@page
+@model projet.Pages.Classes.CreateModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Create";
+}
+if(@User.IsInRole("Admin") ){
+
+
+
+
+
+
+    <script language="JavaScript">
+    
+        
+          window.location="https://"+window.location.host+"/Presences
+          
+     
+    </script>
+}
+
+<h1>Create</h1>
+
+<h4>Classe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Classe.Groupe" class="control-label"></label>
+                <input asp-for="Classe.Groupe" class="form-control" />
+                <span asp-validation-for="Classe.Groupe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Classe.IdF" class="control-label"></label>
+                <select asp-for="Classe.IdF" class ="form-control" asp-items="ViewBag.IdF"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

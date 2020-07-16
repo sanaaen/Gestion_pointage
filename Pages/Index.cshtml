@@ -1,0 +1,32 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if(   !  @User.IsInRole("Admin") ){
+
+
+
+
+
+
+    <script language="JavaScript">
+    
+        setTimeout(function(){
+            window.location.href = "https://"+window.location.host+"/Presences";
+         }, 3000);
+          
+          
+     
+    </script>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @UserManager.GetUserAsync(User).Id           </h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
